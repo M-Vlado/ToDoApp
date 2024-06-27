@@ -25,10 +25,22 @@ android {
 
     buildTypes {
         release {
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://6669414f2e964a6dfed4548a.mockapi.io\""
+            )
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
+            )
+        }
+        debug {
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://6669414f2e964a6dfed4548a.mockapi.io\""
             )
         }
     }
@@ -40,6 +52,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
@@ -92,6 +105,9 @@ dependencies {
     // Ktor
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.client.logging)
+    implementation(libs.logback.classic)
     implementation(libs.ktor.serialization.kotlinx.json)
 
     // Serialization
