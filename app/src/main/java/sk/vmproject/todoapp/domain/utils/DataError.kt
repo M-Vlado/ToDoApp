@@ -2,7 +2,7 @@ package sk.vmproject.todoapp.domain.utils
 
 sealed interface DataError : Error {
     enum class Network : DataError {
-        BAD_REQUEST,
+        NOT_FOUND,
         NO_INTERNET,
         SERVER_ERROR,
         SERIALIZATION,

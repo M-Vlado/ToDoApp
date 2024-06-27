@@ -15,7 +15,7 @@ data class TaskDto(
 
 fun TaskDto.toTask(): Task {
     return Task(
-        id = this.id,
+        id = this.id.toLongOrNull(),
         title = this.title,
         description = this.description,
         completed = this.completed,

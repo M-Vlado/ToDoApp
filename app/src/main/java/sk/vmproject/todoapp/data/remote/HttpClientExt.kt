@@ -48,7 +48,7 @@ suspend inline fun <reified T> safeCall(execute: () -> HttpResponse): Result<T, 
 suspend inline fun <reified T> responseToResult(response: HttpResponse): Result<T, DataError.Network> {
     return when (response.status.value) {
         in 200..299 -> Result.Success<T>(response.body())
-        404 -> Result.Error(DataError.Network.BAD_REQUEST)
+        404 -> Result.Error(DataError.Network.NOT_FOUND)
         in 500..599 -> Result.Error(DataError.Network.SERVER_ERROR)
         else -> Result.Error(DataError.Network.UNKNOWN)
     }
