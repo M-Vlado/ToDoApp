@@ -8,4 +8,6 @@
     <string name="error_disk_full">Failed to save the Todo because your disk is full.</string>
     <string name="error_unknown">Oops, something went wrong, please try again.</string>
     <string name="error_no_internet">Could\\\'t reach server, please check your connection.</string>
+    <string name="go_back">Go back</string>
+    <string name="todo_detail">Todo detail</string>
 </resources>

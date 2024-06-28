@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
+import sk.vmproject.todoapp.presentation.todo_detail.TodoDetailScreenRoot
 import sk.vmproject.todoapp.presentation.todos.TodosScreenRoot
 
 @Composable
@@ -32,16 +33,16 @@ private fun NavGraphBuilder.todoGraph(navController: NavHostController) {
         ) {
             TodosScreenRoot(
                 onTodoClick = {
-                    navController.navigate(Screen.DetailTodoScreen.routeWithParams(todoId = it))
+                    navController.navigate(Screen.TodoDetailScreen.routeWithParams(todoId = it))
                 },
                 onAddTodoClick = {
-                    navController.navigate(Screen.AddEditTodoScreen.routeWithParams(todoId = null))
+                    navController.navigate(Screen.AddTodoScreen.route)
                 }
             )
         }
 
         composable(
-            route = Screen.DetailTodoScreen.route,
+            route = Screen.TodoDetailScreen.route,
             arguments = listOf(
                 navArgument(TODO_ID) {
                     type = NavType.LongType
@@ -49,17 +50,15 @@ private fun NavGraphBuilder.todoGraph(navController: NavHostController) {
                 }
             )
         ) {
-
+            TodoDetailScreenRoot(
+                onGoBackClick = {
+                    navController.navigateUp()
+                }
+            )
         }
 
         composable(
-            route = Screen.AddEditTodoScreen.route,
-            arguments = listOf(
-                navArgument(TODO_ID) {
-                    type = NavType.LongType
-                    defaultValue = -1L
-                }
-            )
+            route = Screen.AddTodoScreen.route,
         ) {
 
         }

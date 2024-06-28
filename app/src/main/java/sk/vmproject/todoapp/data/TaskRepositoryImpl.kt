@@ -46,7 +46,7 @@ class TaskRepositoryImpl(
         }
     }
 
-    override suspend fun getTaskById(taskId: Int): Task {
+    override suspend fun getTaskById(taskId: Long): Task {
         return taskDao.getTaskById(taskId = taskId).toTask()
     }
 

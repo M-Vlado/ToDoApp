@@ -14,7 +14,7 @@ interface TaskRepository {
 
     fun getAllTasks(): Flow<List<Task>>
 
-    suspend fun getTaskById(taskId: Int): Task
+    suspend fun getTaskById(taskId: Long): Task
 
     suspend fun upsertTask(task: Task): Result<TaskId, DataError>
 

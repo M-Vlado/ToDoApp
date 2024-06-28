@@ -30,11 +30,11 @@ class TodosViewModel(
 
     init {
         viewModelScope.launch {
-            todosState = todosState.copy(isLoading = true)
             // check if the application is first time launched
             // if yes so, fetch Tasks from API and save to the Database
             val isFirstLaunch = sharedPreferences.getBoolean(IS_FIRST_LAUNCH, true)
             if (isFirstLaunch) {
+                todosState = todosState.copy(isLoading = true)
                 when (val fetchResult = taskRepository.fetchAllTasks()) {
                     is Result.Error -> {
                         eventChannel.send(TodosEvent.Error(error = fetchResult.error.asUiText()))
