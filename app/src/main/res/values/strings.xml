@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ToDoApp</string>
+    <string name="error_fetch_tasks">Unable download Tasks. Something went wrong!</string>
+    <string name="add_new_todo">Add new todo.</string>
+    <string name="no_save_todos">No saved Todos.</string>
+    <string name="todo_was_deleted">Todo %s was deleted.</string>
+    <string name="undo">UNDO</string>
+    <string name="error_disk_full">Failed to save the Todo because your disk is full.</string>
+    <string name="error_unknown">Oops, something went wrong, please try again.</string>
+    <string name="error_no_internet">Could\\\'t reach server, please check your connection.</string>
 </resources>
