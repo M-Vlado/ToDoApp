@@ -24,6 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sk.vmproject.todoapp.R
 import sk.vmproject.todoapp.ui.theme.ToDoAppTheme
+import sk.vmproject.todoapp.ui.theme.onErrorContainerDark
+import sk.vmproject.todoapp.ui.theme.secondaryContainerLight
 
 @Composable
 fun TodoCardItem(
@@ -52,11 +54,20 @@ fun TodoCardItem(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(
-                                MaterialTheme.colorScheme.primary,
-                                MaterialTheme.colorScheme.secondary
+                    .then(
+                        if (isCompleted) Modifier.background(
+                            brush = Brush.horizontalGradient(
+                                colors = listOf(
+                                    secondaryContainerLight,
+                                    onErrorContainerDark
+                                )
+                            )
+                        ) else Modifier.background(
+                            brush = Brush.horizontalGradient(
+                                colors = listOf(
+                                    MaterialTheme.colorScheme.primary,
+                                    MaterialTheme.colorScheme.secondary
+                                )
                             )
                         )
                     )
@@ -101,7 +112,7 @@ private fun TodoCardItemPreviewLightMode() {
             todoId = 1L,
             title = "Future Division Officer Future Division Officer Future Division Officer",
             description = "Saepe consequuntur placeat fugiat aut deleniti ad provident repellendus sed. Voluptate officia provident. Labore iusto beatae explicabo quisquam molestiae cupiditate magni harum. A voluptatibus alias ratione consequatur. Vero enim assumenda modi impedit ad eius in nihil. Soluta laudantium animi porro dicta architecto facilis magni error.",
-            isCompleted = false,
+            isCompleted = true,
         ) {
 
         }

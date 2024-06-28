@@ -18,6 +18,7 @@ import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,8 +31,12 @@ import androidx.compose.ui.unit.dp
 import org.koin.androidx.compose.koinViewModel
 import sk.vmproject.todoapp.R
 import sk.vmproject.todoapp.domain.model.Task
-import sk.vmproject.todoapp.presentation.utils.formattedDate
+import sk.vmproject.todoapp.presentation.utils.parseAndFormatDate
 import sk.vmproject.todoapp.ui.theme.ToDoAppTheme
+import sk.vmproject.todoapp.ui.theme.onErrorContainerDark
+import sk.vmproject.todoapp.ui.theme.onPrimaryLight
+import sk.vmproject.todoapp.ui.theme.primaryLight
+import sk.vmproject.todoapp.ui.theme.secondaryContainerLight
 
 @Composable
 fun TodoDetailScreenRoot(
@@ -59,7 +64,15 @@ private fun TodoDetailScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(text = stringResource(R.string.todo_detail)) },
+            TopAppBar(
+                title = { Text(text = stringResource(R.string.todo_detail)) },
+                colors = TopAppBarColors(
+                    containerColor = primaryLight,
+                    scrolledContainerColor = primaryLight,
+                    navigationIconContentColor = onPrimaryLight,
+                    titleContentColor = onPrimaryLight,
+                    actionIconContentColor = onPrimaryLight
+                ),
                 navigationIcon = {
                     IconButton(
                         onClick = { onAction(TodoDetailAction.OnGoBack) }
@@ -97,11 +110,20 @@ private fun TodoDetailScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(
-                                brush = Brush.horizontalGradient(
-                                    colors = listOf(
-                                        MaterialTheme.colorScheme.primary,
-                                        MaterialTheme.colorScheme.secondary
+                            .then(
+                                if (task.completed) Modifier.background(
+                                    brush = Brush.horizontalGradient(
+                                        colors = listOf(
+                                            secondaryContainerLight,
+                                            onErrorContainerDark
+                                        )
+                                    )
+                                ) else Modifier.background(
+                                    brush = Brush.horizontalGradient(
+                                        colors = listOf(
+                                            MaterialTheme.colorScheme.primary,
+                                            MaterialTheme.colorScheme.secondary
+                                        )
                                     )
                                 )
                             )
@@ -131,7 +153,7 @@ private fun TodoDetailScreen(
                         )
                     }
                     Text(
-                        text = formattedDate(task.createdAt),
+                        text = parseAndFormatDate(task.createdAt),
                         modifier = Modifier.padding(16.dp)
                     )
                 }

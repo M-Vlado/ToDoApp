@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
+import sk.vmproject.todoapp.presentation.add_todo.AddTodoScreenRoot
 import sk.vmproject.todoapp.presentation.todo_detail.TodoDetailScreenRoot
 import sk.vmproject.todoapp.presentation.todos.TodosScreenRoot
 
@@ -60,7 +61,11 @@ private fun NavGraphBuilder.todoGraph(navController: NavHostController) {
         composable(
             route = Screen.AddTodoScreen.route,
         ) {
-
+            AddTodoScreenRoot(
+                onGoBackClick = {
+                    navController.navigateUp()
+                }
+            )
         }
     }
 }

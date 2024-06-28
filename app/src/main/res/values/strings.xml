@@ -10,4 +10,13 @@
     <string name="error_no_internet">Could\\\'t reach server, please check your connection.</string>
     <string name="go_back">Go back</string>
     <string name="todo_detail">Todo detail</string>
+    <string name="error_title_required">Title is required.</string>
+    <string name="save">Save</string>
+    <string name="optional">Optional</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="saved_successfully">Todo saved successfully.</string>
+    <string name="unsaved_changes">Unsaved changes!</string>
+    <string name="do_you_want_to_save_or_discard">Do you want to Save or Discard?</string>
+    <string name="discard">Discard</string>
 </resources>

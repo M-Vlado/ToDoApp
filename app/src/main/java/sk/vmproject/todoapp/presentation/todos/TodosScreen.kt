@@ -114,6 +114,7 @@ private fun TodosScreen(
             FloatingActionButton(
                 onClick = { onAction(TodosAction.OnAddTodoClick) },
                 modifier = Modifier
+                    .padding(bottom = 40.dp)
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.add_icon),

@@ -10,7 +10,7 @@ import sk.vmproject.todoapp.data.locale.db.entity.TaskEntity
 @Dao
 interface TaskDao {
 
-    @Query("SELECT * FROM task_entity")
+    @Query("SELECT * FROM task_entity ORDER BY created_at DESC")
     fun getAllTask(): Flow<List<TaskEntity>>
 
     @Query("SELECT * FROM task_entity WHERE id= :taskId LIMIT 1")
